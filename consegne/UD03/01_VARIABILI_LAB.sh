@@ -1,4 +1,6 @@
-LAB_SUFFIX="$(openssl rand -hex 3)"
+# LAB_SUFFIX="$(openssl rand -hex 3)"
+LAB_SUFFIX="fb14b9"
 export LAB_RG="rg-cea-identity-${LAB_SUFFIX}"
+export RG_SCOPE="$(az group show --name "$LAB_RG" --query id --output tsv)"
 export LAB_LOCATION="italynorth"
 export LAB_DELETE_AFTER="$(date -u -d '+1 day' +%F)"
