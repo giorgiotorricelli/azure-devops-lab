@@ -13,9 +13,9 @@ Creata assegnazione RBAC e verificato il role assignment tramite CLI, l'**output
 
 | Role | PrincipalType | Scope |
 | :--- | :--- | :--- |
-| Owner | User | `/subscriptions/9570c4c3-b6ad-44e0-93f6-516eb76bcd2e` |
-| Reader | User | `/subscriptions/9570c4c3-b6ad-44e0-93f6-516eb76bcd2e/resourceGroups/rg-cea-identity-fb14b9` |
-| Reader | Group | `/subscriptions/9570c4c3-b6ad-44e0-93f6-516eb76bcd2e/resourceGroups/rg-cea-identity-fb14b9` |
+| Owner | User | `/subscriptions/<omitted>` |
+| Reader | User | `/subscriptions/<omitted>/resourceGroups/rg-cea-identity-fb14b9` |
+| Reader | Group | `/subscriptions/<omitted>/resourceGroups/rg-cea-identity-fb14b9` |
 
 **5**
 
