@@ -116,24 +116,114 @@ Risolve la complessità di gestire **molti container distribuiti su più server*
 ### 20. Che cos'è Infrastructure as Code?
 Infrastructure as Code (IaC) è la pratica di **gestire, configurare ed erogare risorse di infrastruttura** (server, reti, database) tramite file di configurazione o codice leggibile (es. Terraform, Bicep, Ansible), anziché configurarle manualmente tramite interfacce grafiche o terminali.
 
+---
 
-21. Che cosa aggiunge DevSecOps al lifecycle?
-22. Che cos'è una DevOps toolchain?
-23. Quali sono i cinque principali servizi Azure DevOps?
-24. A che cosa serve Azure Boards?
-25. Perché nel corso usiamo GitHub invece di Azure Repos?
-26. Distingui Azure Test Plans e test automatici in pipeline.
-27. Distingui Azure Artifacts e Azure Container Registry.
-28. Distingui Organization e Project.
-29. Distingui Agent, Agent Pool e Parallel Job.
-30. Distingui Microsoft-hosted e self-hosted Agent.
-31. Che cos'è una Service Connection?
-32. Perché il PAT di registrazione può essere revocato dopo che l'agent è Online?
-33. Perché DevOps non coincide con Azure DevOps?
-34. Qual è la differenza tra Azure Pipelines e Azure Pipelines Agent?
-35. Qual è la relazione concettuale tra Azure Pipelines Agent, Jenkins Agent, GitHub Runner e GitLab Runner?
-36. Quali attività svolgerà concretamente l'Agent nelle UD13–UD15?
-37. Perché un Job Microsoft-hosted non dovrebbe dipendere da file lasciati dal Job precedente?
-38. Perché il WSL2 personale del corso non rappresenta la topologia self-hosted tipica di un team?
-39. Come può essere organizzato un Agent Pool aziendale?
-40. Perché più Agent non implicano automaticamente più Job eseguibili in parallelo?
+### 21. Che cosa aggiunge DevSecOps al lifecycle?
+Aggiunge la **sicurezza integrata fin dalle prime fasi** dello sviluppo (*Shift-Left Security*). Invece di verificare la sicurezza solo alla fine, DevSecOps automatizza controlli di vulnerabilità nel codice, nelle dipendenze e nelle infrastrutture durante tutto il ciclo di vita.
+
+---
+
+### 22. Che cos'è una DevOps toolchain?
+È l'insieme di **strumenti e tecnologie interconnesse** che coprono le varie fasi del ciclo di vita DevOps (es. Jira/Azure Boards per il planning, Git per la gestione codice, Jenkins/Azure Pipelines per la CI/CD, Docker/Terraform per la deployment).
+
+---
+
+### 23. Quali sono i cinque principali servizi Azure DevOps?
+I cinque servizi principali sono:
+1. **Azure Boards** (gestione progetti ed elementi di lavoro)
+2. **Azure Repos** (repository di codice sorgente Git)
+3. **Azure Pipelines** (automazione CI/CD)
+4. **Azure Test Plans** (gestione test manuali ed esplorativi)
+5. **Azure Artifacts** (gestione pacchetti di codice/dipendenze)
+
+---
+
+### 24. A che cosa serve Azure Boards?
+Serve a **pianificare, tracciare e gestire il lavoro** dei team di sviluppo tramite strumenti visuali come Kanban board, backlog, sprint ed elementi di lavoro (Epics, Features, User Stories, Bugs).
+
+---
+
+### 25. Perché nel corso usiamo GitHub invece di Azure Repos?
+Perché **GitHub** è lo standard di fatto del mercato ed è integrato nativamente con Azure DevOps. Usarlo consente di sperimentare un ambiente reale con integrazione *cross-platform* tra piattaforme differenti.
+
+---
+
+### 26. Distingui Azure Test Plans e test automatici in pipeline.
+* **Azure Test Plans:** Serve a gestire e tracciare l'esecuzione di **test manuali**, test di accettazione utente (UAT) e test esplorativi.
+* **Test automatici in pipeline:** Sono script di test (es. unitari o di integrazione) eseguiti **automaticamente ed in modo non presidiato** dall'Agent durante l'esecuzione della pipeline.
+
+---
+
+### 27. Distingui Azure Artifacts e Azure Container Registry.
+* **Azure Artifacts:** Gestisce pacchetti e dipendenze di codice sorgente (es. pacchetti NuGet, npm, Maven, PyPI).
+* **Azure Container Registry (ACR):** È un registry dedicato unicamente al salvataggio e alla gestione delle **immagini Docker/container**.
+
+---
+
+### 28. Distingui Organization e Project.
+* **Organization:** È il contenitore di livello più alto in Azure DevOps che raggruppa tutti i progetti, gli utenti e le risorse aziendali.
+* **Project:** È una sotto-divisione all'interno dell'Organization utilizzata per isolare il codice, le pipeline e il lavoro di un singolo team o progetto applicativo.
+
+---
+
+### 29. Distingui Agent, Agent Pool e Parallel Job.
+* **Agent:** La singola macchina/processo che esegue concretamente i comandi della pipeline.
+* **Agent Pool:** Un raggruppamento logico di uno o più Agent disponibili per l'organizzazione.
+* **Parallel Job:** Il numero massimo di Job che l'organizzazione ha la licenza di eseguire **contemporaneamente** (in parallelo).
+
+---
+
+### 30. Distingui Microsoft-hosted e self-hosted Agent.
+* **Microsoft-hosted Agent:** Macchine virtuali gestite, aggiornate e fornite direttamente da Microsoft, ricreate da zero ad ogni singola esecuzione (usa e getta).
+* **Self-hosted Agent:** Macchine o container gestiti direttamente dall'utente o dall'azienda, con controllo completo su software, rete ed ambiente di esecuzione.
+
+---
+
+### 31. Che cos'è una Service Connection?
+È una **connessione sicura e autenticata** in Azure DevOps che consente alle pipeline di interagire con servizi esterni (es. un abbonamento Azure, GitHub, Docker Hub) senza dover esporre credenziali o token nel codice YAML.
+
+---
+
+### 32. Perché il PAT di registrazione può essere revocato dopo che l'agent è Online?
+Perché il **PAT (Personal Access Token)** serve **solo durante la fase iniziale di registrazione** dell'Agent per autenticarsi ed inserirlo nell'Agent Pool. Una volta registrato, l'Agent riceve credenziali dedicate proprie per le successive comunicazioni.
+
+---
+
+### 33. Perché DevOps non coincide con Azure DevOps?
+Perché **DevOps** è una filosofia, cultura e metodologia di lavoro universale, mentre **Azure DevOps** è semplicemente una delle tante suite di strumenti commerciali (prodotta da Microsoft) per implementarla.
+
+---
+
+### 34. Qual è la differenza tra Azure Pipelines e Azure Pipelines Agent?
+* **Azure Pipelines:** È il servizio cloud orchestratore che legge i file YAML, gestisce le code dei Job e ne pianifica l'esecuzione.
+* **Azure Pipelines Agent:** È il software installato su un server/macchina che scarica ed **esegue fisicamente i comandi** definiti nei Job della pipeline.
+
+---
+
+### 35. Qual è la relazione concettuale tra Azure Pipelines Agent, Jenkins Agent, GitHub Runner e GitLab Runner?
+Svolgono tutti **esattamente lo stesso ruolo concettuale**: sono gli esecutori fisici (worker/runner) che ricevono istruzioni dal rispettivo orchestratore cloud/CI-CD ed eseguono i comandi nei vari sistemi.
+
+---
+
+### 36. Quali attività svolgerà concretamente l'Agent nelle UD13–UD15?
+L'Agent scaricherà il codice dal repository, eseguirà il build dell'applicazione, lancerà i test automatici, costruirà le immagini Docker e distribuirà (deploy) l'applicazione su Azure.
+
+---
+
+### 37. Perché un Job Microsoft-hosted non dovrebbe dipendere da file lasciati dal Job precedente?
+Perché ogni Job eseguito su Agent Microsoft-hosted viene lanciato su una **macchina virtuale pulita e diversa**, distrutta subito dopo il termine. I dati non persistono automaticamente tra un Job e l'altro.
+
+---
+
+### 38. Perché il WSL2 personale del corso non rappresenta la topologia self-hosted tipica di un team?
+Perché un ambiente WSL2 personale è **locale, monoutente e temporaneo**. In un ambiente aziendale reale, gli Agent self-hosted risiedono su server dedicati (VM o cluster K8s), sempre attivi, condivisi da tutto il team e gestiti centralmente.
+
+---
+
+### 39. Come può essere organizzato un Agent Pool aziendale?
+Può essere organizzato dividendo gli Agent per **ambiente** (es. Pool-Dev, Pool-Prod), per **capacità hardware/software** (es. Agent Windows per codice .NET, Agent Linux per Docker/Kubernetes) o per **livello di sicurezza e rete** (es. rete interna isolata).
+
+---
+
+### 40. Perché più Agent non implicano automaticamente più Job eseguibili in parallelo?
+Perché il numero di esecuzioni contemporanee è limitato dalla **quota dei Parallel Jobs** acquistati o concessi nell'organizzazione Azure DevOps. Se si hanno 5 Agent ma solo 1 Parallel Job, verrà eseguito un solo Job alla volta e gli altri rimarranno in coda.
