@@ -5,6 +5,7 @@ services:
       dockerfile: docker/backend.Dockerfile
     image: catalog-backend:ud10
     environment:
+      APP_ENV: "local-docker"
       APP_PORT: "8000"
       LOW_STOCK_THRESHOLD: "5"
       RUNTIME_DIR: "/runtime"
